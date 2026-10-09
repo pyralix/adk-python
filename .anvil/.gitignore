@@ -1,0 +1,59 @@
+# .gitignore — anvil-git-policy: v7 · generated and maintained by Anvil
+# Decides which files under .anvil/ are versioned (policy explained below)
+# To customize, delete the `anvil-git-policy: v<n>` marker line at the top of this
+# file — Anvil will stop overwriting it (and stop upgrading its policy for you).
+
+# -- Not versioned: machine-local derivatives ------------------------------
+# Source index pack and its derivatives (purely local, rebuildable by scan)
+agent/repomix.md
+agent/repomix.index.json
+agent/meta.json
+agent/meta-inputs.md
+agent/meta-inputs-manifest.json
+
+# Freshness / sync snapshots (timestamped local cache)
+# Note: .meta/* rather than .meta/, so human.json, confluence-sync.json, jira-sync.json,
+# and repo-settings.json can be allow-listed below
+.meta/*
+!.meta/human.json
+
+# Confluence sync mapping (doc -> page ID/version) -- shared on purpose: if two
+# teammates each sync independently with no shared mapping, they'd each create a
+# duplicate Confluence page for the same doc. Never contains the API token itself
+# (that stays in each person's own OS keychain), only structural doc<->page links.
+!.meta/confluence-sync.json
+
+# Jira sync mapping (backlog item -> issue key) -- shared for the same reason: without
+# it, two teammates pushing independently would each create a duplicate Jira issue for
+# the same item. Never contains the API token itself.
+!.meta/jira-sync.json
+
+# Repo settings (e.g. the default branch feature/bug work is cut from and merged back
+# into) -- a team convention, not a machine-local cache, so it travels with the repo.
+!.meta/repo-settings.json
+
+# Local environment state (tool paths, integration manifest)
+env/
+
+# Intermediate workspace for generation runs
+.litho-agent/
+.sdd-agent/
+.agent-ctx-workspace/
+
+# ARB review deck output (a build artifact regenerable via Create/Refresh, not a knowledge doc)
+agent/arb-deck/
+
+# OS noise
+.DS_Store
+
+# -- Versioned (not excluded by the rules above) ---------------------------
+# knowledge/   hand-maintained private-domain knowledge -- the part that
+#              genuinely needs line-by-line merging
+# agent/context.md, human/, index.md, project-note.md
+#              generated knowledge documents; merge strategy in .gitattributes
+# agent/context-meta.json, .meta/human.json
+#              provenance metadata for versioned documents (baseline git HEAD /
+#              generation time). This must travel with the content it
+#              describes -- otherwise another clone pairs fresh documents with
+#              a stale local baseline and freshness scoring diverges across
+#              machines, with no way to self-correct.

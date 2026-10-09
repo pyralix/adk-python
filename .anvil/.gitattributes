@@ -1,0 +1,18 @@
+# .gitattributes — anvil-git-policy: v7 · generated and maintained by Anvil
+# Decides how generated documents under .anvil/ merge (policy explained below)
+# To customize, delete the `anvil-git-policy: v<n>` marker line at the top of this
+# file — Anvil will stop overwriting it (and stop upgrading its policy for you).
+
+# -- Generated knowledge documents: disable auto-merge ---------------------
+# On conflict:
+#   git checkout --ours  .anvil/agent/context.md   # or --theirs
+#   git add              .anvil/agent/context.md
+#   # then re-run an Anvil scan so assets realign with the merged code
+
+agent/context.md    -merge linguist-generated=true
+index.md            -merge linguist-generated=true
+human/**            -merge linguist-generated=true
+
+# -- Hand-maintained knowledge: normal three-way merge ---------------------
+
+knowledge/**        merge
