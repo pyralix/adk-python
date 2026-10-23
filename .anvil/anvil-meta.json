@@ -5,6 +5,21 @@
       "slug": "apigee-mcp-iacon",
       "repo": "github.com/coupa-it/apigee-mcp-iacon",
       "relationship": "Provides MCP services to agents that we build"
+    },
+    {
+      "slug": "project-archie",
+      "repo": "github.com/coupa-it/project-archie",
+      "relationship": "Is an agent that we built that can be used as reference. Provides solutions architecture guidance for Coupa products."
+    },
+    {
+      "slug": "ask-ede",
+      "repo": "github.com/coupa-it/ask-ede",
+      "relationship": "Is an agent that we built that can be used as reference. Provides internal end user support within Slack."
+    },
+    {
+      "slug": "gtm-sales-buddy",
+      "repo": "github.com/coupa/gtm-sales-buddy",
+      "relationship": "Is an agent that we built that can be used as reference. Bulit by contractors, this agent provides guidance to sales personel when working with account planning and understanding their customers."
     }
   ]
 }
