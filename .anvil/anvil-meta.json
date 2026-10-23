@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "related_repos": [
+    {
+      "slug": "apigee-mcp-iacon",
+      "repo": "github.com/coupa-it/apigee-mcp-iacon",
+      "relationship": "Provides MCP services to agents that we build"
+    }
+  ]
+}
